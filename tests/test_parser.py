@@ -7,8 +7,7 @@ from aspider.routeing import get_router
 
 @pytest.fixture
 def html():
-    # url = 'https://www.cdnbus.bid/SHKD-875'
-    url = 'https://www.busdmm.work/DVAJ-419'
+    url = 'https://www.javsee.bar/DVAJ-419'
     router = get_router()
     router.add_root_path(url.rsplit('/')[0])
 

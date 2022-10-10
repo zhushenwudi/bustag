@@ -5,8 +5,8 @@ import logging
 
 
 def test_process_item():
-    root_path = 'https://www.cdnbus.bid'
-    url = 'https://www.cdnbus.bid/CESD-797'
+    root_path = 'https://www.javsee.bar'
+    url = 'https://www.javsee.bar/CESD-797'
     session = HTMLSession()
     router = get_router()
     router.add_root_path(root_path)

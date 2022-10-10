@@ -3,6 +3,8 @@ html parser to extract data
 '''
 import re
 from collections import namedtuple
+
+from bustag import util
 from requests_html import HTML
 from aspider.routeing import get_router
 router = get_router()
@@ -25,7 +27,13 @@ def parse_item(text):
     title_css = 'body > div.container > h3'
     title = html.find(title_css)[0].text
     cover_img_css = 'body > div.container > div.row.movie > div.col-md-9.screencap > a'
-    cover_img_url = html.find(cover_img_css)[0].attrs['href']
+    a = util.APP_CONFIG['download.root_path']
+    b = html.find(cover_img_css)[0].attrs['href']
+    if re.match(r'^https?:/{2}\w.+$', b):
+        cover_img_url = b
+    else:
+        cover_img_url = a + b
+    print(cover_img_url)
     tags_css = 'body > div.container > div.row.movie > div.col-md-3.info'
     tags = html.find(tags_css)[0].find('p')
     release_date = tags[1].text
